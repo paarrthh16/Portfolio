@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parth Shah - Professional Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #FFFFFF;
+            background: #1A1A1A;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #FFCA28; /* Light yellow/orange */
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1A1A1A;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #757575; /* Dark gray */
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #FFC107; /* Bright yellow */
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: #1A1A1A;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            background: #1A1A1A;
+            display: flex;
+            align-items: center;
+            color: #FFFFFF;
+            overflow: hidden;
+            padding-top: 60px; /* Adjust for fixed navbar */
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .hero-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #FFC107; /* Bright yellow */
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+            color: #FFFFFF;
+            line-height: 1.4;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #B0B0B0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #FFC107; /* Bright yellow */
+            color: #1A1A1A;
+        }
+
+        .btn-primary:hover {
+            background: #FFCA28; /* Light yellow/orange */
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #FFC107;
+            border: 2px solid #FFC107;
+        }
+
+        .btn-outline:hover {
+            background: #FFC107;
+            color: #1A1A1A;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #FFC107; /* Bright yellow */
+        }
+
+        .card {
+            background: #2D2D2D; /* Darker gray for cards */
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* About Section */
+        .about {
+            background: #1A1A1A;
+        }
+
+        .about-card {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #B0B0B0;
+            text-align: center;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: #1A1A1A;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            text-align: center;
+        }
+
+        .skill-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #FFC107; /* Bright yellow */
+        }
+
+        .skill-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+
+        .skill-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-badge {
+            background: #333333;
+            color: #B0B0B0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: #1A1A1A;
+        }
+
+        .experience-card {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #FFC107; /* Bright yellow */
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #B0B0B0;
+        }
+
+        .experience-date {
+            background: #333333;
+            color: #FFFFFF;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .experience-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #B0B0B0;
+            margin-bottom: 1rem;
+        }
+
+        .experience-description {
+            color: #B0B0B0;
+            line-height: 1.7;
+        }
+
+        /* Education Section */
+        .education {
+            background: #1A1A1A;
+        }
+
+        .education-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .education-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #FFC107; /* Bright yellow */
+            margin-bottom: 0.5rem;
+        }
+
+        .education-institution {
+            color: #B0B0B0;
+            font-weight: 500;
+        }
+
+        .education-date {
+            background: #333333;
+            color: #FFFFFF;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Certifications Section */
+        .certifications {
+            background: #1A1A1A;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .certification-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .certification-icon {
+            font-size: 2rem;
+            color: #FFC107; /* Bright yellow */
+        }
+
+        .certification-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 0.25rem;
+        }
+
+        .certification-description {
+            color: #B0B0B0;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #1A1A1A;
+            color: #FFFFFF;
+        }
+
+        .contact .section-title {
+            color: #FFC107; /* Bright yellow */
+        }
+
+        .contact-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #B0B0B0;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: #2D2D2D;
+            border: 1px solid #333333;
+            text-align: center;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #FFC107; /* Bright yellow */
+        }
+
+        .contact-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            color: #B0B0B0;
+        }
+
+        .contact-location {
+            text-align: center;
+            color: #B0B0B0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1A1A1A;
+            color: #FFFFFF;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: #B0B0B0;
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 60px;
+                flex-direction: column;
+                background: #FFCA28; /* Light yellow/orange */
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .nav-toggle.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .experience-header,
+            .education-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .hero-content {
+                padding: 1rem 0;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Parth Shah</div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="image.jpg" alt="Parth Shah" class="hero-image">
+                <h1 class="hero-title">Parth Shah</h1>
+                <p class="hero-subtitle">Aspiring Software Developer | AI ML Enthusiast | Full Stack Web Developer</p>
+                <p class="hero-description">Sophomore BTech CSE @ VIT Chennai '27</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('contact')">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </button>
+                    <button class="btn btn-outline" onclick="openLinkedIn()">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn Profile
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="card about-card">
+                <p class="about-text">
+                    I am Parth, a second-year undergraduate student pursuing a bachelor's in Computer Science and
+                    Engineering at Vellore Institute of Technology, Chennai, India. I like exploring various technical
+                    aspects and deriving solutions to real-life problems. My passion lies in the intersection of
+                    artificial intelligence, machine learning, and full-stack development, where I continuously strive to
+                    build innovative solutions that make a difference.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="card skill-card">
+                    <div class="skill-header">
+                        <i class="fas fa-brain skill-icon"></i>
+                        <h3 class="skill-title">Machine Learning</h3>
+                    </div>
+                    <div class="skill-badges">
+                        <span class="skill-badge">Supervised Learning</span>
+                        <span class="skill-badge">Regression</span>
+                        <span class="skill-badge">Classification</span>
+                        <span class="skill-badge">Model Training</span>
+                    </div>
+                </div>
+
+                <div class="card skill-card">
+                    <div class="skill-header">
+                        <i class="fas fa-database skill-icon"></i>
+                        <h3 class="skill-title">Deep Learning</h3>
+                    </div>
+                    <div class="skill-badges">
+                        <span class="skill-badge">Neural Networks</span>
+                        <span class="skill-badge">RNN</span>
+                        <span class="skill-badge">Model Architecture</span>
+                        <span class="skill-badge">AI Solutions</span>
+                    </div>
+                </div>
+
+                <div class="card skill-card">
+                    <div class="skill-header">
+                        <i class="fas fa-code skill-icon"></i>
+                        <h3 class="skill-title">Development</h3>
+                    </div>
+                    <div class="skill-badges">
+                        <span class="skill-badge">Full Stack</span>
+                        <span class="skill-badge">Web Development</span>
+                        <span class="skill-badge">Problem Solving</span>
+                        <span class="skill-badge">Software Engineering</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="card experience-card">
+                <div class="experience-header">
+                    <div class="experience-info">
+                        <h3 class="experience-title">Machine Learning Engineer</h3>
+                        <p class="experience-company">CODTECH IT SOLUTIONS</p>
+                    </div>
+                    <span class="experience-date">
+                        <i class="fas fa-calendar"></i>
+                        Feb - Mar 2025
+                    </span>
+                </div>
+                <div class="experience-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Hyderabad, Telangana, India</span>
+                </div>
+                <p class="experience-description">
+                    Worked as a Machine Learning Engineer, applying advanced ML techniques to solve real-world problems.
+                    Gained hands-on experience in model development, data analysis, and implementing AI solutions in a
+                    professional environment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-timeline">
+                <div class="card education-card">
+                    <div class="education-header">
+                        <div class="education-info">
+                            <h3 class="education-title">Bachelor of Technology - Computer Science Engineering</h3>
+                            <p class="education-institution">Vellore Institute of Technology, Chennai</p>
+                        </div>
+                        <span class="education-date">2023 - 2027</span>
+                    </div>
+                </div>
+
+                <div class="card education-card">
+                    <div class="education-header">
+                        <div class="education-info">
+                            <h3 class="education-title">12th Grade - PCM</h3>
+                            <p class="education-institution">Aryan International School</p>
+                        </div>
+                        <span class="education-date">2021 - 2023</span>
+                    </div>
+                </div>
+
+                <div class="card education-card">
+                    <div class="education-header">
+                        <div class="education-info">
+                            <h3 class="education-title">Secondary School</h3>
+                            <p class="education-institution">St John's Marhauli, Varanasi</p>
+                        </div>
+                        <span class="education-date">2008 - 2021</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications-grid">
+                <div class="card certification-card">
+                    <div class="certification-header">
+                        <i class="fas fa-award certification-icon"></i>
+                        <div class="certification-info">
+                            <h3 class="certification-title">Machine Learning Engineer</h3>
+                            <p class="certification-description">Professional Certification</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card certification-card">
+                    <div class="certification-header">
+                        <i class="fas fa-award certification-icon"></i>
+                        <div class="certification-info">
+                            <h3 class="certification-title">Supervised Machine Learning</h3>
+                            <p class="certification-description">Regression and Classification</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="contact-subtitle">
+                I'm always open to discussing new opportunities, collaborations, or just having a chat about technology!
+            </p>
+            <div class="contact-grid">
+                <div class="card contact-card" onclick="window.location.href='tel:9956410623'">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <h3 class="contact-title">Phone</h3>
+                    <p class="contact-info">9956410623</p>
+                </div>
+
+                <div class="card contact-card" onclick="window.location.href='mailto:parthss2004@gmail.com'">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <h3 class="contact-title">Email</h3>
+                    <p class="contact-info">parthss2004@gmail.com</p>
+                </div>
+
+                <div class="card contact-card" onclick="openLinkedIn()">
+                    <i class="fab fa-linkedin contact-icon"></i>
+                    <h3 class="contact-title">LinkedIn</h3>
+                    <p class="contact-info">Connect with me</p>
+                </div>
+            </div>
+            <div class="contact-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Varanasi, Uttar Pradesh, India</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© 2025 Parth Shah. Crafted with passion for technology and passion.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const offsetTop = element.offsetTop - 60;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Add click event listeners to navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
+        });
+
+        // Open LinkedIn profile
+        function openLinkedIn() {
+            window.open('https://www.linkedin.com/in/parth-shah-b4762b248', '_blank');
+        }
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = '#FFCA28';
+            } else {
+                navbar.style.background = '#FFCA28';
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Add fade-in class to elements and observe them
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.card, .section-title, .hero-content');
+            animatedElements.forEach(el => {
+                el.classList.add('fade-in');
+                observer.observe(el);
+            });
+        });
+
+        // Active navigation link highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add hover effects for interactive elements
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
