@@ -1,0 +1,303 @@
+// import { motion } from "framer-motion";
+// import { BookOpen, Brain, Code, Rocket } from "lucide-react";
+
+// const milestones = [
+//   {
+//     icon: BookOpen,
+//     title: "Engineering & Programming Foundations",
+//     description:
+//       "Python Programming • C/C++ & OOP • Digital System Design • Electrical Engineering • Engineering Physics • Engineering Chemistry • Calculus • Differential Equations • Technical Report Writing • Communication & Soft Skills",
+//     status: "completed",
+//   },
+//   {
+//     icon: Code,
+//     title: "Core Computer Science & System Foundations",
+//     description:
+//       "Data Structures & Algorithms • Computer Networks • Theory of Computation • Java Programming • Microprocessors & Microcontrollers • Discrete Mathematics & Graph Theory • Web Programming • Operating Systems • Database Management Systems • Computer Architecture & Organization • Artificial Intelligence • Complex Variables & Linear Algebra",
+//     status: "completed",
+//   },
+//   {
+//     icon: Brain,
+//     title: "AI, Cloud & Advanced Computing",
+//     description:
+//       "Machine Learning • Deep Learning • Software Engineering • Compiler Design • Cryptography & Network Security • Machine Vision • Speech & Language Processing • Embedded Systems • AWS Cloud Computing • Probability & Statistics • Design & Analysis of Algorithms • Advanced Competitive Coding",
+//     status: "completed",
+//   },
+//   {
+//     icon: Rocket,
+//     title: "Industry-Ready AI Engineer",
+//     description:
+//       "Production ML Systems • MLOps • Scalable AI Architectures • Enterprise AI Solutions • Real-Time Intelligent Applications • End-to-End AI Pipelines • Cloud-Native AI Deployment",
+//     status: "in-progress",
+//   },
+// ];
+
+// const Roadmap = () => {
+//   return (
+//     <section id="roadmap" className="section-container bg-background-secondary">
+//       <div className="gradient-blob w-[400px] h-[400px] bg-primary/20 -left-20 top-1/3 animate-pulse-glow" />
+
+//       <div className="container relative z-10">
+//         <motion.div
+//           initial={{ opacity: 0, y: 30 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           viewport={{ once: true, margin: "-100px" }}
+//           transition={{ duration: 0.6 }}
+//           className="text-center mb-16"
+//         >
+//           <span className="font-mono text-sm text-primary tracking-widest uppercase">Journey</span>
+//           <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mt-4">
+//             Learning Roadmap
+//           </h2>
+//         </motion.div>
+
+//         <div className="max-w-2xl mx-auto">
+//           <div className="relative">
+//             {/* Timeline line */}
+//             <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-cyber-teal to-muted" />
+
+//             <div className="space-y-8">
+//               {milestones.map((milestone, index) => {
+//                 const isCompleted = milestone.status === "completed";
+//                 const isCurrent = milestone.status === "current";
+//                 const isInProgress = milestone.status === "in-progress";
+
+//                 return (
+//                   <motion.div
+//                     key={milestone.title}
+//                     initial={{ opacity: 0, x: -30 }}
+//                     whileInView={{ opacity: 1, x: 0 }}
+//                     viewport={{ once: true }}
+//                     transition={{ duration: 0.5, delay: index * 0.1 }}
+//                     className="relative pl-16 md:pl-20"
+//                   >
+//                     {/* Timeline dot */}
+//                     <div
+//                       className={`absolute left-4 md:left-6 top-2 w-4 h-4 md:w-5 md:h-5 rounded-full border-2 transition-all ${
+//                         isCompleted
+//                           ? "bg-neon-green border-neon-green shadow-lg shadow-neon-green/30"
+//                           : isCurrent || isInProgress
+//                           ? "bg-primary border-primary shadow-lg shadow-primary/30 animate-pulse"
+//                           : "bg-background border-muted-foreground"
+//                       }`}
+//                     />
+
+//                     <div
+//                       className={`glass-card-hover p-6 ${
+//                         isCurrent || isInProgress ? "border-primary/30" : ""
+//                       }`}
+//                     >
+//                       <div className="flex items-start gap-4">
+//                         <div
+//                           className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 ${
+//                             isCompleted
+//                               ? "bg-neon-green/10"
+//                               : isCurrent || isInProgress
+//                               ? "bg-primary/10"
+//                               : "bg-muted"
+//                           }`}
+//                         >
+//                           <milestone.icon
+//                             className={`w-6 h-6 ${
+//                               isCompleted
+//                                 ? "text-neon-green"
+//                                 : isCurrent || isInProgress
+//                                 ? "text-primary"
+//                                 : "text-muted-foreground"
+//                             }`}
+//                           />
+//                         </div>
+//                         <div>
+//                           <div className="flex items-center gap-3 mb-1">
+//                             <h3 className="font-heading text-lg font-bold">{milestone.title}</h3>
+//                             {(isCompleted || isCurrent || isInProgress) && (
+//                               <span
+//                                 className={`px-2 py-0.5 rounded-full text-xs font-mono ${
+//                                   isCompleted
+//                                     ? "bg-neon-green/10 text-neon-green"
+//                                     : "bg-primary/10 text-primary"
+//                                 }`}
+//                               >
+//                                 {isCompleted
+//                                   ? "Completed"
+//                                   : isCurrent
+//                                   ? "Current"
+//                                   : "In Progress"}
+//                               </span>
+//                             )}
+//                           </div>
+//                           <p className="text-muted-foreground text-sm">{milestone.description}</p>
+//                         </div>
+//                       </div>
+//                     </div>
+//                   </motion.div>
+//                 );
+//               })}
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Roadmap;
+
+import { motion } from "framer-motion";
+import { BookOpen, Code, Brain, Briefcase, Rocket } from "lucide-react";
+
+const milestones = [
+  {
+    icon: BookOpen,
+    title: "2023 • Started B.Tech at VIT Chennai",
+    description:
+      "Began my Computer Science journey with a specialization in Artificial Intelligence & Machine Learning, building strong foundations in programming, mathematics, and core computer science.",
+    status: "completed",
+  },
+  {
+    icon: Code,
+    title: "Strengthened Software Engineering Foundations",
+    description:
+      "Built expertise in Java, Python, C++, Data Structures & Algorithms, Object-Oriented Programming, DBMS, Operating Systems, and Computer Networks while sharpening problem-solving skills.",
+    status: "completed",
+  },
+  {
+    icon: Briefcase,
+    title: "Machine Learning Intern — CODTECH IT Solutions",
+    description:
+      "Engineered automated data preprocessing pipelines with Python and Pandas, reducing manual effort by 30%. Built and evaluated classification and regression models, improving prediction accuracy by 12%.",
+    status: "completed",
+  },
+  {
+    icon: Brain,
+    title: "Built AI & Full-Stack Applications",
+    description:
+      "Design & Developed production-oriented applications using React, Node.js, FastAPI, TensorFlow, OpenCV, PostgreSQL, Docker, Redis, and RabbitMQ, exploring scalable and secure software architectures.",
+    status: "completed",
+  },
+  {
+    icon: Briefcase,
+    title: "Full-Stack Web App Developer Intern — Manbal.ai",
+    description:
+      "Contributed to the development of production-grade full-stack web application within a collaborative engineering team while gaining hands-on experience in scalable software architecture, modern development workflows, and real-world product delivery.",
+    status: "completed",
+  },
+  {
+  icon: Rocket,
+  title: "Industry-Ready Software Engineer",
+  description:
+    "Continuously expanding my expertise in backend engineering, distributed systems, cloud-native technologies, and artificial intelligence with the goal of building scalable software products that create meaningful real-world impact.",
+  status: "in-progress",
+},
+];
+
+const Roadmap = () => {
+  return (
+    <section id="roadmap" className="section-container bg-background-secondary">
+      <div className="gradient-blob w-[400px] h-[400px] bg-primary/20 -left-20 top-1/3 animate-pulse-glow" />
+
+      <div className="container relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="font-mono text-sm text-primary tracking-widest uppercase">Journey</span>
+          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mt-4">
+            Learning Roadmap
+          </h2>
+        </motion.div>
+
+        <div className="max-w-2xl mx-auto">
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-cyber-teal to-muted" />
+
+            <div className="space-y-8">
+              {milestones.map((milestone, index) => {
+                const isCompleted = milestone.status === "completed";
+                const isCurrent = milestone.status === "current";
+                const isInProgress = milestone.status === "in-progress";
+
+                return (
+                  <motion.div
+                    key={milestone.title}
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="relative pl-16 md:pl-20"
+                  >
+                    {/* Timeline dot */}
+                    <div
+                      className={`absolute left-4 md:left-6 top-2 w-4 h-4 md:w-5 md:h-5 rounded-full border-2 transition-all ${
+                        isCompleted
+                          ? "bg-neon-green border-neon-green shadow-lg shadow-neon-green/30"
+                          : isCurrent || isInProgress
+                          ? "bg-primary border-primary shadow-lg shadow-primary/30 animate-pulse"
+                          : "bg-background border-muted-foreground"
+                      }`}
+                    />
+
+                    <div
+                      className={`glass-card-hover p-6 ${
+                        isCurrent || isInProgress ? "border-primary/30" : ""
+                      }`}
+                    >
+                      <div className="flex items-start gap-4">
+                        <div
+                          className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 ${
+                            isCompleted
+                              ? "bg-neon-green/10"
+                              : isCurrent || isInProgress
+                              ? "bg-primary/10"
+                              : "bg-muted"
+                          }`}
+                        >
+                          <milestone.icon
+                            className={`w-6 h-6 ${
+                              isCompleted
+                                ? "text-neon-green"
+                                : isCurrent || isInProgress
+                                ? "text-primary"
+                                : "text-muted-foreground"
+                            }`}
+                          />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-3 mb-1">
+                            <h3 className="font-heading text-lg font-bold">{milestone.title}</h3>
+                            {(isCompleted || isCurrent || isInProgress) && (
+                              <span
+                                className={`px-2 py-0.5 rounded-full text-xs font-mono ${
+                                  isCompleted
+                                    ? "bg-neon-green/10 text-neon-green"
+                                    : "bg-primary/10 text-primary"
+                                }`}
+                              >
+                                {isCompleted
+                                  ? "Completed"
+                                  : isCurrent
+                                  ? "Current"
+                                  : "In Progress"}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-muted-foreground text-sm">{milestone.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Roadmap;
