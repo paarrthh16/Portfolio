@@ -15,7 +15,7 @@ const highlights = [
 
 const stats = [
   {
-    value: "8.62",
+    value: "7.55",
     label: "CGPA",
   },
   {
