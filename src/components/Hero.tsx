@@ -74,7 +74,8 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-heading text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-none"
+              className="font-heading font-black tracking-tight leading-none"
+              style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
             >
               <span className="gradient-text-orange">FULL STACK</span>
               <br />

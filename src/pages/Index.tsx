@@ -10,7 +10,7 @@ const Index = () => {
   });
 
   return (
-    <main className="relative overflow-hidden">
+    <main className="relative overflow-hidden pt-16 md:pt-20">
       <Navbar />
       <Hero />
       <Profile />

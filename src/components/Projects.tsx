@@ -19,7 +19,7 @@ const Projects = () => {
           <span className="font-mono text-sm uppercase tracking-widest text-primary">
             Featured Work
           </span>
-          <h2 className="mt-4 font-heading text-4xl font-bold md:text-5xl lg:text-6xl">
+          <h2 className="font-heading font-bold mt-4" style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}>
             Projects
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-balance text-base leading-7 text-muted-foreground md:text-lg">

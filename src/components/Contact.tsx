@@ -83,7 +83,7 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <span className="font-mono text-sm text-primary tracking-widest uppercase">Get in Touch</span>
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mt-4">
+          <h2 className="font-heading font-bold mt-4" style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}>
             Let's Connect
           </h2>
           <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-lg">

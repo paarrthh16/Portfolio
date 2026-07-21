@@ -16,7 +16,7 @@ const CodingProfiles = () => {
           className="text-center mb-16"
         >
           <span className="font-mono text-sm text-primary tracking-widest uppercase">Coding Activity</span>
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mt-4">
+          <h2 className="font-heading text-[clamp(2.8rem,5vw,4.8rem)] font-bold mt-4">
             Coding Profiles
           </h2>
         </motion.div>
