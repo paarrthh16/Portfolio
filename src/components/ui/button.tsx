@@ -46,23 +46,38 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, magnetic = true, onMouseMove, onMouseLeave, style, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     const [offset, setOffset] = React.useState({ x: 0, y: 0 });
+    const rafRef = React.useRef<number>();
 
     const handleMouseMove = (event: React.MouseEvent<HTMLButtonElement>) => {
       if (magnetic) {
-        const bounds = event.currentTarget.getBoundingClientRect();
-        const x = (event.clientX - bounds.left - bounds.width / 2) * 0.25;
-        const y = (event.clientY - bounds.top - bounds.height / 2) * 0.35;
-        setOffset({ x, y });
+        const clientX = event.clientX;
+        const clientY = event.clientY;
+        const target = event.currentTarget;
+
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        rafRef.current = requestAnimationFrame(() => {
+          const bounds = target.getBoundingClientRect();
+          const x = (clientX - bounds.left - bounds.width / 2) * 0.25;
+          const y = (clientY - bounds.top - bounds.height / 2) * 0.35;
+          setOffset({ x, y });
+        });
       }
       onMouseMove?.(event);
     };
 
     const handleMouseLeave = (event: React.MouseEvent<HTMLButtonElement>) => {
       if (magnetic) {
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
         setOffset({ x: 0, y: 0 });
       }
       onMouseLeave?.(event);
     };
+
+    React.useEffect(() => {
+      return () => {
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      };
+    }, []);
 
     return (
       <Comp

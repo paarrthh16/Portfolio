@@ -3,7 +3,7 @@ import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-mot
 import { ArrowRight, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import ProfileImage from "@/assets/image/profile1.png";
+import ProfileImage from "@/assets/image/profile1.webp";
 
 const Hero = () => {
   // Feature 1: Interactive Mouse-Follow Lighting state
@@ -168,6 +168,8 @@ const Hero = () => {
               <img
                 src={ProfileImage}
                 alt="Parth Shah - Full Stack AI Engineer"
+                width={500}
+                height={500}
                 className="relative w-[92%] h-auto max-h-[95%] object-contain object-bottom drop-shadow-2xl z-20 origin-bottom pointer-events-none"
               />
 

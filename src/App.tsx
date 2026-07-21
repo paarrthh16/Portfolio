@@ -1,3 +1,4 @@
+import { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -6,15 +7,15 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 
-import Index from "./pages/Index";
-import AboutPage from "./pages/AboutPage";
-import SkillsPage from "./pages/SkillsPage";
-import ProfilesPage from "./pages/ProfilesPage";
-import ProjectsPage from "./pages/ProjectsPage";
-import RoadmapPage from "./pages/RoadmapPage";
-import ResumePage from "./pages/ResumePage";
-import ContactPage from "./pages/ContactPage";
-import NotFound from "./pages/NotFound";
+const Index = lazy(() => import("./pages/Index"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const SkillsPage = lazy(() => import("./pages/SkillsPage"));
+const ProfilesPage = lazy(() => import("./pages/ProfilesPage"));
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
+const RoadmapPage = lazy(() => import("./pages/RoadmapPage"));
+const ResumePage = lazy(() => import("./pages/ResumePage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
@@ -30,49 +31,54 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
     initial="initial"
     animate="animate"
     exit="exit"
-    transition={{
-      duration: 0.35,
-      ease: [0.22, 1, 0.36, 1],
-    }}
+    transition={{ duration: 0.35, ease: "easeInOut" }}
   >
     {children}
   </motion.div>
+);
+
+const PageLoader = () => (
+  <div className="flex min-h-screen items-center justify-center bg-background">
+    <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+  </div>
 );
 
 const AnimatedRoutes = () => {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
-        <Route path="/about" element={<PageWrapper><AboutPage /></PageWrapper>} />
-        <Route path="/skills" element={<PageWrapper><SkillsPage /></PageWrapper>} />
-        <Route path="/profiles" element={<PageWrapper><ProfilesPage /></PageWrapper>} />
-        <Route path="/projects" element={<PageWrapper><ProjectsPage /></PageWrapper>} />
-        <Route path="/roadmap" element={<PageWrapper><RoadmapPage /></PageWrapper>} />
-        <Route path="/resume" element={<PageWrapper><ResumePage /></PageWrapper>} />
-        <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
-        <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
-      </Routes>
-    </AnimatePresence>
+    <Suspense fallback={<PageLoader />}>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
+          <Route path="/about" element={<PageWrapper><AboutPage /></PageWrapper>} />
+          <Route path="/skills" element={<PageWrapper><SkillsPage /></PageWrapper>} />
+          <Route path="/profiles" element={<PageWrapper><ProfilesPage /></PageWrapper>} />
+          <Route path="/projects" element={<PageWrapper><ProjectsPage /></PageWrapper>} />
+          <Route path="/roadmap" element={<PageWrapper><RoadmapPage /></PageWrapper>} />
+          <Route path="/resume" element={<PageWrapper><ResumePage /></PageWrapper>} />
+          <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
+          <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
+        </Routes>
+      </AnimatePresence>
+    </Suspense>
   );
 };
 
 const App = () => {
-   useSmoothScroll();
+  useSmoothScroll();
 
-   return(
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AnimatedRoutes />
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AnimatedRoutes />
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
 };
 
 export default App;
